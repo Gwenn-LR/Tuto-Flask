@@ -1,7 +1,5 @@
 # Create a Blueprint
 
-from crypt import methods
-from distutils.log import error
 import functools
 
 from flask import (
