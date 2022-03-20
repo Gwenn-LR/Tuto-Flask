@@ -30,12 +30,17 @@ def create_app(test_config=None):
     def hello():
         return "Hello, World!"
 
-# Register with the Application
+## Register with the Application
     from . import db
     db.init_app(app)
 
-# Create a Blueprint
+## Create a Blueprint
     from . import auth
     app.register_blueprint(auth.bp)
+
+## The Blueprint
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint="index")
 
     return app
