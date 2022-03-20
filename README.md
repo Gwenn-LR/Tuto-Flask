@@ -282,3 +282,19 @@ Now that the authentication templates are written, you can register a user. Make
 Try clicking the “Register” button without filling out the form and see that the browser shows an error message. Try removing the ```required``` attributes from the ```register.html``` template and click “Register” again. Instead of the browser showing an error, the page will reload and the error from [flash()](https://flask.palletsprojects.com/en/2.0.x/api/#flask.flash) in the view will be shown.
 
 Fill out a username and password and you’ll be redirected to the login page. Try entering an incorrect username, or the correct username and incorrect password. If you log in you’ll get an error because there’s no ```index``` view to redirect to yet.
+
+
+# Static Files
+The authentication views and templates work, but they look very plain right now. Some [CSS](https://developer.mozilla.org/docs/Web/CSS) can be added to add style to the HTML layout you constructed. The style won’t change, so it’s a ___static___ file rather than a template.
+
+Flask automatically adds a ```static``` view that takes a path relative to the ```flaskr/static``` directory and serves it. The ```base.html``` template already has a link to the ```style.css``` file:
+
+```{{ url_for('static', filename='style.css') }}```
+
+Besides CSS, other types of static files might be files with JavaScript functions, or a logo image. They are all placed under the ```flaskr/static``` directory and referenced with ```url_for('static', filename='...')```.
+
+This tutorial isn’t focused on how to write CSS, so you can just copy the following into the ```flaskr/static/style.css``` file:
+
+```flaskr/static/style.css```
+
+You can read more about CSS from Mozilla’s documentation. If you change a static file, refresh the browser page. If the change doesn’t show up, try clearing your browser’s cache.
